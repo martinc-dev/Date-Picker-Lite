@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Manrope', sans-serif;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+}
+
+.framework {
+  width: 218px;
+  margin: 50px auto;
+}
+
+.frameworkBody {
+  width: 100%;
+}
+
+.frameworkMainBlock {
+  width: 100%;
+}
+
+.frameworkMainHeader {
+  height: 40px;
+}
+
+.calendarControl {
+  position: relative;
+  height: 100%;
+}
+
+.calendarControlRangeSelectorBlock {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  padding: 8px 0;
+  vertical-align: top;
+}
+
+.calendarMonth,
+.calendarYearSelector,
+.calendarYearSelector__year,
+.calendarYearSelector__buttons {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.calendarYearSelector__year {
+  margin-left: 5px;
+}
+
+.calendarYearSelector__buttons {
+  vertical-align: bottom;
+}
+
+.calendarYearSelector__buttons {
+}
+
+.calendarYearSelector__prevYearButton,
+.calendarYearSelector__nextYearButton {
+  display: block;
+  font-size: 10px;
+  width: 10px;
+  height: 10px;
+}
+
+.calendarControlMonthButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  background-color: #fff;
+  color: #ccc;
+}
+
+.calendarControlMonthButtonPrev {
+  left: 0;
+}
+
+.calendarControlMonthButtonNext {
+  right: 0;
+}
+
+.frameworkMainBody {
+  width: 100%;
+}
+
+.calendarHeaderDayCell {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: top;
+}
+
+.calendarDayCell {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.calendarHeaderDayCell {
+  padding-top: 4px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.calendarDayCell {
+  position: relative;
+  background-color: #fff;
+}
+
+.calendarDayCell--disabled .calendarDayCellBody {
+  opacity: 0;
+}
+
+.calendarDayCell--active .calendarDayCellBody {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.calendarDayCellBody {
+  width: 31px;
+  height: 30px;
+  padding: 6px 7px;
+  font-size: 14px;
+  border-left: 1px solid #ccc;
+  text-align: center;
+  background-color: #fff;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.calendarDayCellBody:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.calendarWeekRow {
+  position: relative;
+  height: 31px;
+  width: 218px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendarWeekHeaderRow + .calendarWeekRow {
+  height: 32px;
+  border-top: 1px solid #ccc;
+}
+
+.calendarWeekHeaderRow + .calendarWeekRow .calendarDayCell--disabled {
+  top: -1px;
+}
+
+.calendarWeekRow:last-of-type .calendarDayCell--disabled {
+  height: 31px;
+}
+
+.calendarWeekRow:last-of-type .calendarDayCell--enabled + .calendarDayCell--disabled {
+  width: 31px;
+  border-left: 1px solid #ccc;
+}
+
+.calendarDayCell--disabled:last-of-type .calendarDayCellBody {
+    position: relative;
+    right: -1px;
+    height: 31px;
+    border-left: 0;
+    background-color: #fff;
+    opacity: 1;
+}
