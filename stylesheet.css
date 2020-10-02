@@ -3,44 +3,36 @@
 }
 
 body {
-  margin: 0;
   width: 100%;
   height: 100%;
-  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 button {
-  border: none;
   margin: 0;
   padding: 0;
+  border: none;
   text-decoration: none;
   background: none;
   cursor: pointer;
 }
 
-.framework {
+.datePicker {
   width: 218px;
   margin: 50px auto;
 }
 
-.frameworkBody {
-  width: 100%;
-}
-
-.frameworkMainBlock {
-  width: 100%;
-}
-
-.frameworkMainHeader {
+.datePickerNav {
+  position: relative;
   height: 40px;
 }
 
-.calendarControl {
-  position: relative;
+.datePickerNav__content {
   height: 100%;
 }
 
-.calendarControlRangeSelectorBlock {
+.datePickerNav__current {
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -51,34 +43,31 @@ button {
   vertical-align: top;
 }
 
-.calendarMonth,
-.calendarYearSelector,
-.calendarYearSelector__year,
-.calendarYearSelector__buttons {
+.datePickerNav__currentMonth,
+.datePickerNav__currentYear,
+.datePickerNav__yearText,
+.datePickerNav__yearButtons {
   display: inline-block;
   font-size: 12px;
 }
 
-.calendarYearSelector__year {
+.datePickerNav__yearText {
   margin-left: 5px;
 }
 
-.calendarYearSelector__buttons {
+.datePickerNav__yearButtons {
   vertical-align: bottom;
 }
 
-.calendarYearSelector__buttons {
-}
-
-.calendarYearSelector__prevYearButton,
-.calendarYearSelector__nextYearButton {
+.datePickerNav__yearButton--prev,
+.datePickerNav__yearButton--next {
   display: block;
-  font-size: 10px;
   width: 10px;
   height: 10px;
+  font-size: 10px;
 }
 
-.calendarControlMonthButton {
+.datePickerNav__monthButton {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -87,98 +76,95 @@ button {
   color: #ccc;
 }
 
-.calendarControlMonthButtonPrev {
+.datePickerNav__monthButton--prev {
   left: 0;
 }
 
-.calendarControlMonthButtonNext {
+.datePickerNav__monthButton--next {
   right: 0;
 }
 
-.frameworkMainBody {
+.datePickerCal {
   width: 100%;
 }
 
-.calendarHeaderDayCell {
+.weekRowHeader__dayCell {
   display: inline-block;
   width: 30px;
   height: 30px;
-  vertical-align: top;
-}
-
-.calendarDayCell {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.calendarHeaderDayCell {
   padding-top: 4px;
+  vertical-align: top;
   text-align: center;
   font-weight: 600;
 }
 
-.calendarDayCell {
+.dayCell {
+  display: inline-block;
   position: relative;
+  vertical-align: top;
   background-color: #fff;
 }
 
-.calendarDayCell--disabled .calendarDayCellBody {
-  opacity: 0;
-}
-
-.calendarDayCell--active .calendarDayCellBody {
-  background-color: #ccc;
-  color: #fff;
-}
-
-.calendarDayCellBody {
+.dayCell__content {
   width: 31px;
   height: 30px;
   padding: 6px 7px;
-  font-size: 14px;
   border-left: 1px solid #ccc;
   text-align: center;
+  font-size: 14px;
   background-color: #fff;
   color: #ccc;
-  cursor: pointer;
 }
 
-.calendarDayCellBody:hover {
+.dayCell__content:hover {
   background-color: #ccc;
   color: #fff;
 }
 
-.calendarWeekRow {
+.dayCell--disabled .dayCell__content {
+  opacity: 0;
+}
+
+.dayCell--active .dayCell__content {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.dayCell--enabled .dayCell__content {
+  cursor: pointer;
+}
+
+.dayCell--disabled:last-of-type .dayCell__content {
   position: relative;
+  right: -1px;
   height: 31px;
+  border-left: 0;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.weekRow {
+  position: relative;
   width: 218px;
+  height: 31px;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 
-.calendarWeekHeaderRow + .calendarWeekRow {
+.weekRowHeader + .weekRow {
   height: 32px;
   border-top: 1px solid #ccc;
 }
 
-.calendarWeekHeaderRow + .calendarWeekRow .calendarDayCell--disabled {
+.weekRowHeader + .weekRow .dayCell--disabled {
   top: -1px;
 }
 
-.calendarWeekRow:last-of-type .calendarDayCell--disabled {
+.weekRow:last-of-type .dayCell--disabled {
   height: 31px;
 }
 
-.calendarWeekRow:last-of-type .calendarDayCell--enabled + .calendarDayCell--disabled {
+.weekRow:last-of-type .dayCell--enabled + .dayCell--disabled {
   width: 31px;
   border-left: 1px solid #ccc;
-}
-
-.calendarDayCell--disabled:last-of-type .calendarDayCellBody {
-    position: relative;
-    right: -1px;
-    height: 31px;
-    border-left: 0;
-    background-color: #fff;
-    opacity: 1;
 }
