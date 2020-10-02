@@ -104,7 +104,7 @@ const timeUtils = {
 
 const elementUtils = {
   getElement: (cssQuery, dom = document) => dom.querySelector(cssQuery),
-  getElements: (cssQuery, dom = document) => [...dom.querySelectorAll(cssQuery)],
+  getElements: (cssQuery, dom = document) => Array.prototype.slice.call(dom.querySelectorAll(cssQuery)),
   setInnerHtml: (htmlString, element) => (element.innerHTML = htmlString),
   removeElement: element => element.parentNode.removeChild(element)
 }
@@ -189,7 +189,7 @@ class BaseComponent {
   }
 
   setState(newState) {
-    this.state = Object.assign({}, this.state, newState)
+    this.state = { ...this.state, ...newState }
   }
 
   setHandler(selector, eventType, handler) {
@@ -197,7 +197,7 @@ class BaseComponent {
     const mountingElement = elementUtils.getElement(anchor)
 
     if (mountingElement && mountingElement.childNodes) {
-      ;[...mountingElement.childNodes].map(childNode => {
+      ;Array.prototype.slice.call(mountingElement.childNodes).map(childNode => {
         if (childNode.nodeType !== Node.TEXT_NODE) {
           const targetElement = elementUtils.getElement(selector, childNode)
 
@@ -212,9 +212,9 @@ class BaseComponent {
     const mountingElement = elementUtils.getElement(anchor)
 
     if (mountingElement && mountingElement.childNodes) {
-      ;[...mountingElement.childNodes].map(childNode => {
+      ;Array.prototype.slice.call(mountingElement.childNodes).map(childNode => {
         if (childNode.nodeType !== Node.TEXT_NODE) {
-          ;[...elementUtils.getElements(selector, childNode)].map(targetElement =>
+          ;elementUtils.getElements(selector, childNode).map(targetElement =>
             targetElement.addEventListener(eventType, handler)
           )
         }
@@ -227,7 +227,7 @@ class BaseComponent {
     const mountingElement = elementUtils.getElement(anchor)
 
     if (mountingElement && mountingElement.childNodes) {
-      const [targetElement] = [...mountingElement.childNodes]
+      const [targetElement] = Array.prototype.slice.call(mountingElement.childNodes)
         .map(childNode => childNode.nodeType !== Node.TEXT_NODE && elementUtils.getElement(selector, childNode))
         .filter(t => t)
 
@@ -251,7 +251,7 @@ class BaseComponent {
     const { anchor } = this.property
     const mountingElement = elementUtils.getElement(anchor)
 
-    if (mountingElement && mountingElement.childNodes) [...mountingElement.childNodes].map(elementUtils.removeElement)
+    if (mountingElement && mountingElement.childNodes) Array.prototype.slice.call(mountingElement.childNodes).map(elementUtils.removeElement)
   }
 
   refresh() {
